@@ -1,5 +1,7 @@
 # 2048 Game
 
+[Game Screenshot](images/Screenshot-of-the-game%20.png)
+
 A **2048 game** built with React and TailwindCSS. Play the classic 2048 puzzle, combining tiles to reach 2048 while tracking your score.  
 
 ---
@@ -44,3 +46,4 @@ npm run dev
 2. Combine tiles with the same number to earn points.
 3. Reach the 2048 tile to win.
 4. Click Restart to reset the board anytime.
+
