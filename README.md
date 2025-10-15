@@ -1,6 +1,6 @@
 # 2048 Game
 
-[Game Screenshot](images/Screenshot-of-the-game%20.png)
+<img src="images/Screenshot-of-the-game .png" width="400"/>
 
 A **2048 game** built with React and TailwindCSS. Play the classic 2048 puzzle, combining tiles to reach 2048 while tracking your score.  
 
