@@ -7,6 +7,7 @@ function Board() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [victory, setVictory] = useState(false);
 
   function initBoard(size) {
     const newBoard = generateEmptyBoard(size);
@@ -75,6 +76,11 @@ function Board() {
       addRandomTile(newBoard);
       setBoard(newBoard);
       setScore(prev => prev + gainedScore);
+
+      if (newBoard.flat().includes(2048) && !victory) {
+        setVictory(true);
+      }
+
       if (isGameOver(newBoard)) setGameOver(true);
     }
   };
@@ -94,6 +100,7 @@ function Board() {
     setBoard(initBoard(boardSize));
     setScore(0);
     setGameOver(false);
+    setVictory(false);
   };
 
   return (
@@ -127,6 +134,7 @@ function Board() {
             setBoard(initBoard(size));
             setScore(0);
             setGameOver(false);
+            setVictory(false);
           }}
           className="bg-white border-2 border-amber-600 px-3 sm:px-4 py-2 sm:py-3 rounded-xl text-sm sm:text-lg font-semibold text-gray-700 focus:outline-none focus:border-amber-700 shadow-lg hover:shadow-xl transition cursor-pointer"
         >
@@ -199,6 +207,29 @@ function Board() {
         </div>
       )}
 
+      {victory && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-2xl text-center max-w-xs sm:max-w-sm">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-green-600">🎉 You Win!</h2>
+            <p className="mb-4 text-lg sm:text-xl font-semibold">You reached 2048!</p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => setVictory(false)}
+                className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold shadow-lg transform transition hover:from-blue-500 hover:to-blue-700"
+              >
+                Continue Playing
+              </button>
+              <button
+                onClick={restartGame}
+                className="bg-gradient-to-r from-green-400 to-green-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold shadow-lg transform transition hover:from-green-500 hover:to-green-700"
+              >
+                Restart
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showInfo && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-2xl text-center max-w-xs sm:max-w-sm">
@@ -208,7 +239,7 @@ function Board() {
             </p>
             <button
               onClick={() => setShowInfo(false)}
-              className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold shadow-lg transform transition hover:from-blue-500 hover:to-blue-700"
+              className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold shadow-lg transform transition hover:from-bl  ue-500 hover:to-blue-700" 
             >
               Close
             </button>
