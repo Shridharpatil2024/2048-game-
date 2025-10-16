@@ -9,6 +9,7 @@ A **2048 game** built with React and TailwindCSS. Play the classic 2048 puzzle, 
 ## Project Features
 
 - Classic **2048 gameplay** using arrow keys.
+- **Responsive design** for desktop and mobile devices.
 - **Dynamic board sizes**: 4x4, 5x5, 6x6.
 - **Score tracking** and game over detection.
 - **Restart** and **Info** buttons with interactive modals.
@@ -28,7 +29,7 @@ A **2048 game** built with React and TailwindCSS. Play the classic 2048 puzzle, 
 
 1. **Clone the repository**  
 ```bash
-git clone 
+git clone https://github.com/Shridharpatil2024/2048-game-.git
 
 ```
 2. **Install dependencies**

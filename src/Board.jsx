@@ -97,11 +97,9 @@ function Board() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-b from-amber-100 to-amber-100 p-4 sm:p-6">
-      {/* Title */}
+    <div className="flex flex-col items-center justify-start h-screen bg-amber-100 p-4 sm:p-6 overflow-hidden">
       <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-center text-amber-800 drop-shadow-lg">2048</h1>
 
-      {/* Controls + Score */}
       <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
         <button
           onClick={restartGame}
@@ -138,14 +136,13 @@ function Board() {
         </select>
       </div>
 
-      {/* Fully Responsive Board */}
       <div className="w-[90vw] sm:w-[80vw] max-w-[500px]">
         <div
           className="bg-amber-700 rounded-3xl p-2 sm:p-4 grid gap-2 sm:gap-4 shadow-2xl"
           style={{
             gridTemplateColumns: `repeat(${boardSize}, 1fr)`,
             gridTemplateRows: `repeat(${boardSize}, 1fr)`,
-            aspectRatio: '1 / 1' // keeps board square
+            aspectRatio: '1 / 1'
           }}
         >
           {board.flat().map((num, idx) => (
@@ -157,9 +154,36 @@ function Board() {
             </div>
           ))}
         </div>
+
+
+        <div className="mt-6 flex justify-center items-center gap-3">
+          <button
+            onClick={() => moveBoard('ArrowLeft')}
+            className="bg-gradient-to-br from-amber-500 to-amber-700 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-bold text-3xl shadow-xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center"
+          >
+            ⬅️
+          </button>
+          <button
+            onClick={() => moveBoard('ArrowUp')}
+            className="bg-gradient-to-br from-amber-500 to-amber-700 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-bold text-3xl shadow-xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center"
+          >
+            ⬆️
+          </button>
+          <button
+            onClick={() => moveBoard('ArrowDown')}
+            className="bg-gradient-to-br from-amber-500 to-amber-700 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-bold text-3xl shadow-xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center"
+          >
+            ⬇️
+          </button>
+          <button
+            onClick={() => moveBoard('ArrowRight')}
+            className="bg-gradient-to-br from-amber-500 to-amber-700 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-bold text-3xl shadow-xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center"
+          >
+            ➡️
+          </button>
+        </div>
       </div>
 
-      {/* Game Over Modal */}
       {gameOver && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-2xl text-center max-w-xs sm:max-w-sm">
@@ -175,7 +199,6 @@ function Board() {
         </div>
       )}
 
-      {/* Info Modal */}
       {showInfo && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-2xl text-center max-w-xs sm:max-w-sm">
